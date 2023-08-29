@@ -33,7 +33,7 @@ elements.select.addEventListener('change', handlerOnChange);
 
 elements.loader.classList.add('loader');
 
-function handlerOnChange() {
+function handlerOnChange(evt) {
   const value = elements.select.value;
   elements.loader.classList.add('loader');
   fetchCatByBreed(value)
@@ -44,6 +44,7 @@ function handlerOnChange() {
 <p class="breed-temp"><span class="text-decotarion">Temperament:</span> ${cat.breeds[0].temperament}</p>`;
     })
     .catch(error => {
+      elements.infoContainer.innerHTML = '';
       throw new Error(Notiflix.Notify.failure(elements.onError.textContent));
     })
     .finally(() => {
